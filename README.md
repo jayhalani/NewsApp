@@ -1,0 +1,2 @@
+# NewsApp
+This is the eighth project I've submitted to Udacity for the Android Basics NanoDegree. The main criteria of the Project is to  create a News feed app which gives a user regularly-updated news from the internet related to a particular topic, person, or location. The presentation of the information as well as the topic is up to you. Here I've used the Guardians news api in order to fetch results and display them to the user.
