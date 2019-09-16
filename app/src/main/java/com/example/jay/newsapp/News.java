@@ -13,7 +13,7 @@ public class News implements Parcelable{
     private String mArticleDate;
     private String mUrl;
 
-    public News(String headlines, String articleType, String articleDate, String url){
+    News(String headlines, String articleType, String articleDate, String url){
         mHeadlines = headlines;
         mArticleType = articleType;
         mArticleDate = articleDate;
@@ -28,19 +28,19 @@ public class News implements Parcelable{
     }
 
 
-    public String getHeadlines() {
+    String getHeadlines() {
         return mHeadlines;
     }
 
-    public String getArticleType() {
+    String getArticleType() {
         return mArticleType;
     }
 
-    public String getArticleDate() {
+    String getArticleDate() {
         return mArticleDate;
     }
 
-    public String getUrl() {
+    String getUrl() {
         return mUrl;
     }
 

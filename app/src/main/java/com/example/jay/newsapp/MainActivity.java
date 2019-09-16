@@ -1,6 +1,7 @@
 package com.example.jay.newsapp;
 
 import android.app.LoaderManager;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
@@ -22,7 +23,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, LoaderManager.LoaderCallbacks<List<News>> {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
+        LoaderManager.LoaderCallbacks<List<News>> {
 
     ListView mNewsListView;
     NewsAdapter mAdapter;
@@ -122,7 +124,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.btn_search));
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(this);
         return true;
 

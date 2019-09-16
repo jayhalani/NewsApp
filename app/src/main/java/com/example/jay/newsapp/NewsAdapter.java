@@ -1,6 +1,7 @@
 package com.example.jay.newsapp;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +16,14 @@ import java.util.List;
 
 public class NewsAdapter extends ArrayAdapter<News> {
 
-    public NewsAdapter(Context context, List<News> newses) {
+    NewsAdapter(Context context, List<News> newses) {
         super(context, 0, newses);
     }
 
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext())
@@ -31,17 +33,18 @@ public class NewsAdapter extends ArrayAdapter<News> {
         News currentNews = getItem(position);
 
         // Find the textView with ID headlines
-        TextView headlinesTextView = (TextView)
+        TextView headlinesTextView =
                 listItemView.findViewById(R.id.headlines);
+        assert currentNews != null;
         headlinesTextView.setText(currentNews.getHeadlines());
 
         // Find the textView with ID news_type
-        TextView newsTypeTextView = (TextView)
+        TextView newsTypeTextView =
                 listItemView.findViewById(R.id.news_type);
         newsTypeTextView.setText(currentNews.getArticleType());
 
         // Find the textView with ID news_date
-        TextView newsDateTextView = (TextView)
+        TextView newsDateTextView =
                 listItemView.findViewById(R.id.news_date);
         newsDateTextView.setText(currentNews.getArticleDate());
 

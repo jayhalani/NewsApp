@@ -26,13 +26,13 @@ import java.util.Locale;
  * Created by Jay on 4/22/2017.
  */
 
-public final class QueryUtils {
+final class QueryUtils {
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     private QueryUtils() {
     }
 
-    public static List<News> fetchNewsData(String requestUrl) {
+    static List<News> fetchNewsData(String requestUrl) {
         URL url = createUrl(requestUrl);
         String jsonResponse = null;
         try {
@@ -40,12 +40,11 @@ public final class QueryUtils {
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
-        List<News> newses = extractResultFromJson(jsonResponse);
-        return newses;
+        return extractResultFromJson(jsonResponse);
     }
 
-    public static URL createUrl(String stringUrl) {
-        URL url = null;
+    private static URL createUrl(String stringUrl) {
+        URL url;
         try {
             url = new URL(stringUrl);
         } catch (MalformedURLException e) {
@@ -105,7 +104,7 @@ public final class QueryUtils {
         return output.toString();
     }
 
-    public static ArrayList<News> extractResultFromJson(String newsJSON) {
+    private static ArrayList<News> extractResultFromJson(String newsJSON) {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
